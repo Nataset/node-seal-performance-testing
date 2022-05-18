@@ -6,86 +6,86 @@
 -   MacOS Monterey 12.3.1
 -   Ram 8 GB
 
-### PolyModulus: 2048, CoeffModulus Degrees: 54
+### PolyModulus: 2048, CoeffModulus: 54
 
-| function       | BFV(ms) | CKKS(ms) |
-| -------------- | ------- | -------- |
-| genSkTime      | 1.48    | 0.38     |
-| genPkTime      | 0.37    | 0.35     |
-| encodeTime     | 0.13    | 0.14     |
-| decodeTime     | 0.10    | 0.10     |
-| encryptTime    | 0.87    | 0.48     |
-| decryptTime    | 0.22    | 0.04     |
-| addTime        | 0.06    | 0.05     |
-| multiTime      | 1.99    | 0.07     |
-| multiPlainTime | 0.25    | 0.03     |
-| squareTime     | 1.46    | 0.06     |
+|             | BFV(ms) | BGV(ms) | CKKS(ms) | BFV(MB) | BGV(MB) | CKKS(MB) |
+| ----------- | ------- | ------- | -------- | ------- | ------- | -------- |
+| Secret key  | 1.51    | 0.43    | 0.40     | 0.02    | 0.02    | 0.02     |
+| Public key  | 0.40    | 0.36    | 0.35     | 0.04    | 0.04    | 0.04     |
+| Encode      | 0.01    | 0.01    | 0.01     | 0.00    | 0.00    | 0.02     |
+| Decode      | 0.01    | 0.01    | 0.01     |         |         |          |
+| Encrypt     | 0.08    | 0.04    | 0.05     | 0.04    | 0.04    | 0.04     |
+| Decrypt     | 0.02    | 0.02    | 0.00     | 0.01    | 0.01    | 0.02     |
+| Add         | 0.01    | 0.00    | 0.01     | 0.04    | 0.04    | 0.04     |
+| Multi       | 0.20    | 0.04    | 0.01     | 0.06    | 0.06    | 0.06     |
+| Multi Plain | 0.03    | 0.02    | 0.00     | 0.04    | 0.04    | 0.04     |
+| Square      | 0.15    | 0.03    | 0.01     | 0.06    | 0.06    | 0.06     |
 
-### PolyModulus: 4096, CoeffModulus Degrees: 109
+### PolyModulus: 4096, CoeffModulus: 109
 
-| function             | BFV(ms)   | CKKS(ms)  |
-| -------------------- | --------- | --------- |
-| genSkTime            | 0.64      | 0.63      |
-| genPkTime            | 1.06      | 1.07      |
-| genRelinTime         | 2.47      | 2.52      |
-| genGkTime            | 48.70     | 47.40     |
-| encodeTime           | 0.14      | 0.36      |
-| decodeTime           | 0.18      | 0.46      |
-| encryptTime          | 2.58      | 2.37      |
-| decryptTime          | 0.67      | 0.13      |
-| addTime              | 0.19      | 0.20      |
-| multiTime            | 7.03      | 0.28      |
-| multiPlainTime       | 1.05      | 0.12      |
-| squareTime           | 5.04      | 0.23      |
-| relinTime            | 1.47      | 1.48      |
-| rotateRowsTime       | 2.88      | undefined |
-| rotateColumnsTime    | 1.43      | undefined |
-| rescaleTime          | undefined | 0.42      |
-| rotateVectorTime     | undefined | 1.46      |
-| complexConjugateTime | undefined | 0.74      |
+|                   | BFV(ms) | BGV(ms) | CKKS(ms) | BFV(MB) | BGV(MB) | CKKS(MB) |
+| ----------------- | ------- | ------- | -------- | ------- | ------- | -------- |
+| Secret key        | 0.65    | 0.61    | 0.60     | 0.09    | 0.09    | 0.09     |
+| Public key        | 1.02    | 1.09    | 1.10     | 0.18    | 0.18    | 0.18     |
+| Relinear keys     | 2.35    | 2.44    | 6.20     | 0.37    | 0.37    | 0.37     |
+| Galois keys       | 47.34   | 47.56   | 46.16    | 8.09    | 8.09    | 8.09     |
+| Encode            | 0.01    | 0.01    | 0.03     | 0.00    | 0.00    | 0.04     |
+| Decode            | 0.01    | 0.01    | 0.04     |         |         |          |
+| Encrypt           | 0.25    | 0.18    | 0.23     | 0.12    | 0.12    | 0.12     |
+| Decrypt           | 0.07    | 0.06    | 0.01     | 0.02    | 0.02    | 0.06     |
+| Add               | 0.02    | 0.02    | 0.02     | 0.12    | 0.12    | 0.12     |
+| Multi             | 0.70    | 0.16    | 0.03     | 0.18    | 0.18    | 0.18     |
+| Multi Plain       | 0.10    | 0.10    | 0.01     | 0.12    | 0.12    | 0.12     |
+| Square            | 0.50    | 0.11    | 0.02     | 0.18    | 0.18    | 0.18     |
+| Relinearize       | 0.16    | 0.16    | 0.15     | 0.12    | 0.12    | 0.12     |
+| Rotate Rows       | 0.28    | 0.30    |          | 0.12    | 0.12    |          |
+| Rotate Columns    | 0.14    | 0.15    |          | 0.12    | 0.12    |          |
+| Rescale           |         |         | 0.04     |         |         | 0.06     |
+| Rotate Vector     |         |         | 0.15     |         |         | 0.06     |
+| Complex Conjugate |         |         | 0.08     |         |         | 0.06     |
 
-### PolyModulus: 8192, CoeffModulus Degrees: 218
+### PolyModulus: 8192, CoeffModulus: 218
 
-| function             | BFV(ms)   | CKKS(ms)  |
-| -------------------- | --------- | --------- |
-| genSkTime            | 1.82      | 1.94      |
-| genPkTime            | 3.03      | 3.11      |
-| genRelinTime         | 12.57     | 12.98     |
-| genGkTime            | 291.23    | 303.97    |
-| encodeTime           | 0.25      | 1.23      |
-| decodeTime           | 0.31      | 2.06      |
-| encryptTime          | 7.35      | 7.85      |
-| decryptTime          | 2.45      | 0.46      |
-| addTime              | 0.76      | 0.79      |
-| multiTime            | 27.24     | 1.19      |
-| multiPlainTime       | 4.34      | 0.51      |
-| squareTime           | 19.97     | 0.96      |
-| relinTime            | 7.32      | 7.69      |
-| rotateRowsTime       | 14.52     | undefined |
-| rotateColumnsTime    | 7.24      | undefined |
-| rescaleTime          | undefined | 1.83      |
-| rotateVectorTime     | undefined | 10.20     |
-| complexConjugateTime | undefined | 5.06      |
+|                   | BFV(ms) | BGV(ms) | CKKS(ms) | BFV(MB) | BGV(MB) | CKKS(MB) |
+| ----------------- | ------- | ------- | -------- | ------- | ------- | -------- |
+| Secret key        | 1.88    | 1.66    | 1.57     | 0.36    | 0.36    | 0.36     |
+| Public key        | 2.95    | 3.09    | 2.96     | 0.72    | 0.72    | 0.72     |
+| Relinear keys     | 11.96   | 12.70   | 12.18    | 2.89    | 2.89    | 2.89     |
+| Galois keys       | 290.63  | 291.37  | 285.67   | 69.41   | 69.41   | 69.41    |
+| Encode            | 0.02    | 0.03    | 0.12     | 0.00    | 0.00    | 0.28     |
+| Decode            | 0.03    | 0.03    | 0.19     |         |         |          |
+| Encrypt           | 0.73    | 0.55    | 0.74     | 0.58    | 0.58    | 0.58     |
+| Decrypt           | 0.24    | 0.22    | 0.04     | 0.04    | 0.04    | 0.29     |
+| Add               | 0.08    | 0.08    | 0.07     | 0.58    | 0.58    | 0.58     |
+| Multi             | 2.72    | 0.69    | 0.11     | 0.86    | 0.86    | 0.87     |
+| Multi Plain       | 0.46    | 0.44    | 0.05     | 0.58    | 0.58    | 0.58     |
+| Square            | 2.01    | 0.48    | 0.09     | 0.86    | 0.86    | 0.86     |
+| Relinearize       | 0.73    | 0.78    | 0.74     | 0.58    | 0.58    | 0.58     |
+| Rotate Rows       | 1.46    | 1.53    |          | 0.58    | 0.58    |          |
+| Rotate Columns    | 0.73    | 0.77    |          | 0.58    | 0.58    |          |
+| Rescale           |         |         | 0.17     |         |         | 0.43     |
+| Rotate Vector     |         |         | 0.98     |         |         | 0.43     |
+| Complex Conjugate |         |         | 0.48     |         |         | 0.43     |
 
-### PolyModulus: 16384, CoeffModulus Degrees: 438
+### PolyModulus: 16384, CoeffModulus: 438
 
-| function             | BFV(ms)   | CKKS(ms)  |
-| -------------------- | --------- | --------- |
-| genSkTime            | 5.88      | 7.50      |
-| genPkTime            | 10.53     | 10.76     |
-| genRelinTime         | 84.86     | 83.37     |
-| genGkTime            | 2137.49   | 2144.67   |
-| encodeTime           | 0.52      | 4.71      |
-| decodeTime           | 0.58      | 9.95      |
-| encryptTime          | 23.75     | 26.84     |
-| decryptTime          | 9.48      | 1.73      |
-| addTime              | 3.03      | 3.06      |
-| multiTime            | 119.03    | 4.49      |
-| multiPlainTime       | 18.55     | 1.96      |
-| squareTime           | 88.70     | 3.65      |
-| relinTime            | 45.11     | 45.91     |
-| rotateRowsTime       | 89.49     | undefined |
-| rotateColumnsTime    | 44.64     | undefined |
-| rescaleTime          | undefined | 7.26      |
-| rotateVectorTime     | undefined | 72.88     |
-| complexConjugateTime | undefined | 36.46     |
+|                   | BFV(ms) | BGV(ms) | CKKS(ms) | BFV(MB) | BGV(MB) | CKKS(MB) |
+| ----------------- | ------- | ------- | -------- | ------- | ------- | -------- |
+| Secret key        | 5.36    | 5.76    | 5.26     | 1.37    | 1.37    | 1.37     |
+| Public key        | 10.52   | 10.77   | 10.09    | 2.74    | 2.74    | 2.74     |
+| Relinear keys     | 83.84   | 84.88   | 86.51    | 21.94   | 21.94   | 21.94    |
+| Galois keys       | 2156.07 | 2174.65 | 2144.48  |         |         |          |
+| Encode            | 0.05    | 0.05    | 0.45     | 0.00    | 0.00    | 1.21     |
+| Decode            | 0.05    | 0.06    | 0.96     |         |         |          |
+| Encrypt           | 2.33    | 1.90    | 2.60     | 2.44    | 2.43    | 2.43     |
+| Decrypt           | 0.94    | 0.89    | 0.17     | 0.07    | 0.07    | 1.22     |
+| Add               | 0.31    | 0.30    | 0.30     | 2.44    | 2.43    | 2.43     |
+| Multi             | 11.81   | 2.88    | 0.45     | 3.65    | 3.65    | 3.65     |
+| Multi Plain       | 1.87    | 1.87    | 0.20     | 2.43    | 2.43    | 2.43     |
+| Square            | 8.92    | 2.05    | 0.36     | 3.65    | 3.65    | 3.65     |
+| Relinearize       | 4.47    | 4.63    | 4.74     | 2.44    | 2.44    | 2.43     |
+| Rotate Rows       | 9.09    | 9.11    |          | 2.43    | 2.43    |          |
+| Rotate Columns    | 4.45    | 4.55    |          | 2.43    | 2.44    |          |
+| Rescale           |         |         | 0.74     |         |         | 2.13     |
+| Rotate Vector     |         |         | 7.28     |         |         | 2.13     |
+| Complex Conjugate |         |         | 3.64     |         |         | 2.13     |
