@@ -1,5 +1,3 @@
-const { time } = require('console');
-
 (async () => {
     const fs = require('fs');
     const SEAL = require('node-seal');
