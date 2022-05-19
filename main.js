@@ -152,7 +152,7 @@
         for (let i = 0; i < count; i++) {
             // [Encoding]
             let plainText = timeOperatorFunctionBFV('Encode', () => encoder.encode(podValues));
-            record.operators['Encode'].size = getSize(plainModulus);
+            record.operators['Encode'].size = 'Plain: ' + getSize(plainText).toFixed(3);
 
             // [Decoding]
             timeOperatorFunctionBFV('Decode', () => encoder.decode(plainText, false));
@@ -161,13 +161,13 @@
             const encrypted = timeOperatorFunctionBFV('Encrypt', () =>
                 encryptor.encrypt(plainText),
             );
-            record.operators['Encrypt'].size = getSize(encrypted);
+            record.operators['Encrypt'].size = 'Cipher: ' + getSize(encrypted).toFixed(3);
 
             // [Decryption]
             const plainTextResult = timeOperatorFunctionBFV('Decrypt', () =>
                 decryptor.decrypt(encrypted),
             );
-            record.operators['Decrypt'].size = getSize(plainTextResult);
+            record.operators['Decrypt'].size = 'Plain: ' + getSize(plainTextResult).toFixed(3);
 
             // [Add]
             const podValues1 = Int32Array.from({ length: encoder.slotCount }, (_, index) => index);
@@ -184,46 +184,46 @@
                 evaluator.add(encrypted2, encrypted2, encrypted2);
                 evaluator.add(encrypted1, encrypted2, encrypted1);
             });
-            record.operators['Add'].size = getSize(encrypted1);
+            record.operators['Add'].size = 'Cipher: ' + getSize(encrypted1).toFixed(3);
 
             // [Multiply]
             encrypted1.reserve(context, 3);
             timeOperatorFunctionBFV('Multi', () => {
                 evaluator.multiply(encrypted1, encrypted2, encrypted1);
             });
-            record.operators['Multi'].size = getSize(encrypted1);
+            record.operators['Multi'].size = 'Cipher: ' + getSize(encrypted1).toFixed(3);
 
             // [Multiply Plain]
             timeOperatorFunctionBFV('Multi Plain', () => {
                 evaluator.multiplyPlain(encrypted2, plainText1, encrypted2);
             });
-            record.operators['Multi Plain'].size = getSize(encrypted2);
+            record.operators['Multi Plain'].size = 'Cipher: ' + getSize(encrypted2).toFixed(3);
 
             // [Square]
             timeOperatorFunctionBFV('Square', () => {
                 evaluator.square(encrypted2, encrypted2);
             });
-            record.operators['Square'].size = getSize(encrypted2);
+            record.operators['Square'].size = 'Cipher: ' + getSize(encrypted2).toFixed(3);
 
             if (context.usingKeyswitching) {
                 // [Relinearize]
                 timeOperatorFunctionBFV('Relinearize', () =>
                     evaluator.relinearize(encrypted1, relinKeys, encrypted1),
                 );
-                record.operators['Relinearize'].size = getSize(encrypted1);
+                record.operators['Relinearize'].size = 'Cipher: ' + getSize(encrypted1).toFixed(3);
 
                 // [Rotate Rows]
                 timeOperatorFunctionBFV('Rotate Rows', () => {
                     evaluator.rotateRows(encrypted1, 1, galoisKeys, encrypted1);
                     evaluator.rotateRows(encrypted1, -1, galoisKeys, encrypted1);
                 });
-                record.operators['Rotate Rows'].size = getSize(encrypted1);
+                record.operators['Rotate Rows'].size = 'Cipher' + getSize(encrypted1).toFixed(3);
 
                 // [Rotate Columns]
                 timeOperatorFunctionBFV('Rotate Columns', () =>
                     evaluator.rotateColumns(encrypted1, galoisKeys, encrypted1),
                 );
-                record.operators['Rotate Columns'].size = getSize(encrypted1);
+                record.operators['Rotate Columns'].size = 'Cipher' + getSize(encrypted1).toFixed(3);
             }
 
             dotCount++;
@@ -312,7 +312,7 @@
         for (let i = 0; i < count; i++) {
             // [Encoding]
             let plainText = timeOperatorFunctionBGV('Encode', () => encoder.encode(podValues));
-            record.operators['Encode'].size = getSize(plainModulus);
+            record.operators['Encode'].size = 'Plain: ' + getSize(plainText).toFixed(3);
 
             // [Decoding]
             timeOperatorFunctionBGV('Decode', () => encoder.decode(plainText, false));
@@ -321,13 +321,13 @@
             const encrypted = timeOperatorFunctionBGV('Encrypt', () =>
                 encryptor.encrypt(plainText),
             );
-            record.operators['Encrypt'].size = getSize(encrypted);
+            record.operators['Encrypt'].size = 'Cipher: ' + getSize(encrypted).toFixed(3);
 
             // [Decryption]
             const plainTextResult = timeOperatorFunctionBGV('Decrypt', () =>
                 decryptor.decrypt(encrypted),
             );
-            record.operators['Decrypt'].size = getSize(plainTextResult);
+            record.operators['Decrypt'].size = 'Plain: ' + getSize(plainTextResult).toFixed(3);
 
             // [Add]
             const podValues1 = Int32Array.from({ length: encoder.slotCount }, (_, index) => index);
@@ -344,46 +344,46 @@
                 evaluator.add(encrypted2, encrypted2, encrypted2);
                 evaluator.add(encrypted1, encrypted2, encrypted1);
             });
-            record.operators['Add'].size = getSize(encrypted1);
+            record.operators['Add'].size = 'Cipher: ' + getSize(encrypted1).toFixed(3);
 
             // [Multiply]
             encrypted1.reserve(context, 3);
             timeOperatorFunctionBGV('Multi', () => {
                 evaluator.multiply(encrypted1, encrypted2, encrypted1);
             });
-            record.operators['Multi'].size = getSize(encrypted1);
+            record.operators['Multi'].size = 'Cipher: ' + getSize(encrypted1).toFixed(3);
 
             // [Multiply Plain]
             timeOperatorFunctionBGV('Multi Plain', () => {
                 evaluator.multiplyPlain(encrypted2, plainText, encrypted2);
             });
-            record.operators['Multi Plain'].size = getSize(encrypted2);
+            record.operators['Multi Plain'].size = 'Cipher: ' + getSize(encrypted2).toFixed(3);
 
             // [Square]
             timeOperatorFunctionBGV('Square', () => {
                 evaluator.square(encrypted2, encrypted2);
             });
-            record.operators['Square'].size = getSize(encrypted2);
+            record.operators['Square'].size = 'Cipher: ' + getSize(encrypted2).toFixed(3);
 
             if (context.usingKeyswitching) {
                 // [Relinearize]
                 timeOperatorFunctionBGV('Relinearize', () =>
                     evaluator.relinearize(encrypted1, relinKeys, encrypted1),
                 );
-                record.operators['Relinearize'].size = getSize(encrypted1);
+                record.operators['Relinearize'].size = 'Cipher: ' + getSize(encrypted1).toFixed(3);
 
                 // [Rotate Rows]
                 timeOperatorFunctionBGV('Rotate Rows', () => {
                     evaluator.rotateRows(encrypted1, 1, galoisKeys, encrypted1);
                     evaluator.rotateRows(encrypted1, -1, galoisKeys, encrypted1);
                 });
-                record.operators['Rotate Rows'].size = getSize(encrypted1);
+                record.operators['Rotate Rows'].size = 'Cipher' + getSize(encrypted1).toFixed(3);
 
                 // [Rotate Columns]
                 timeOperatorFunctionBGV('Rotate Columns', () =>
                     evaluator.rotateColumns(encrypted1, galoisKeys, encrypted1),
                 );
-                record.operators['Rotate Columns'].size = getSize(encrypted1);
+                record.operators['Rotate Columns'].size = 'Cipher' + getSize(encrypted1).toFixed(3);
             }
 
             dotCount++;
@@ -475,7 +475,7 @@
             let plainText = timeOperatorFunctionCKKS('Encode', () =>
                 encoder.encode(podValues, scale),
             );
-            record.operators['Encode'].size = getSize(plainText);
+            record.operators['Encode'].size = 'Plain: ' + getSize(plainText).toFixed(3);
 
             // [Decoding]
             timeOperatorFunctionCKKS('Decode', () => encoder.decode(plainText));
@@ -484,13 +484,13 @@
             const encrypted = timeOperatorFunctionCKKS('Encrypt', () =>
                 encryptor.encrypt(plainText),
             );
-            record.operators['Encrypt'].size = getSize(encrypted);
+            record.operators['Encrypt'].size = 'Cipher: ' + getSize(encrypted).toFixed(3);
 
             // [Decryption]
             const plainTextResult = timeOperatorFunctionCKKS('Decrypt', () =>
                 decryptor.decrypt(encrypted),
             );
-            record.operators['Decrypt'].size = getSize(plainTextResult);
+            record.operators['Decrypt'].size = 'Plain: ' + getSize(plainTextResult).toFixed(3);
 
             // [Add]
             const plainText1 = encoder.encode(Float64Array.from([i + 1]), Math.pow(2, 13));
@@ -503,52 +503,54 @@
                 evaluator.add(encrypted2, encrypted2, encrypted2);
                 evaluator.add(encrypted1, encrypted2, encrypted1);
             });
-            record.operators['Add'].size = getSize(encrypted1);
+            record.operators['Add'].size = 'Cipher: ' + getSize(encrypted1).toFixed(3);
 
             // [Multiply]
             encrypted1.reserve(context, 3);
             timeOperatorFunctionCKKS('Multi', () => {
                 evaluator.multiply(encrypted1, encrypted2, encrypted1);
             });
-            record.operators['Multi'].size = getSize(encrypted1);
+            record.operators['Multi'].size = 'Cipher: ' + getSize(encrypted1).toFixed(3);
 
             // [Multiply Plain]
             timeOperatorFunctionCKKS('Multi Plain', () => {
                 evaluator.multiplyPlain(encrypted2, plainText1, encrypted2);
             });
-            record.operators['Multi Plain'].size = getSize(encrypted2);
+            record.operators['Multi Plain'].size = 'Cipher: ' + getSize(encrypted2).toFixed(3);
 
             // [Square]
             timeOperatorFunctionCKKS('Square', () => {
                 evaluator.square(encrypted2, encrypted2);
             });
-            record.operators['Square'].size = getSize(encrypted2);
+            record.operators['Square'].size = 'Cipher: ' + getSize(encrypted2).toFixed(3);
 
             if (context.usingKeyswitching) {
                 // [Relinearize]
                 timeOperatorFunctionCKKS('Relinearize', () =>
                     evaluator.relinearize(encrypted1, relinKeys, encrypted1),
                 );
-                record.operators['Relinearize'].size = getSize(encrypted1);
+                record.operators['Relinearize'].size = 'Cipher: ' + getSize(encrypted1).toFixed(3);
 
                 // [Rescale]
                 timeOperatorFunctionCKKS('Rescale', () =>
                     evaluator.rescaleToNext(encrypted1, encrypted1),
                 );
-                record.operators['Rescale'].size = getSize(encrypted1);
+                record.operators['Rescale'].size = 'Cipher: ' + getSize(encrypted1).toFixed(3);
 
                 // [Rotate Vector]
                 timeOperatorFunctionCKKS('Rotate Vector', () => {
                     evaluator.rotateVector(encrypted1, 1, galoisKeys, encrypted1);
                     evaluator.rotateVector(encrypted1, -1, galoisKeys, encrypted1);
                 });
-                record.operators['Rotate Vector'].size = getSize(encrypted1);
+                record.operators['Rotate Vector'].size =
+                    'Cipher: ' + getSize(encrypted1).toFixed(3);
 
                 // [Complex Conjugate]
                 timeOperatorFunctionCKKS('Complex Conjugate', () =>
                     evaluator.complexConjugate(encrypted1, galoisKeys, encrypted1),
                 );
-                record.operators['Complex Conjugate'].size = getSize(encrypted1);
+                record.operators['Complex Conjugate'].size =
+                    'Cipher: ' + getSize(encrypted1).toFixed(3);
             }
 
             dotCount++;
@@ -707,25 +709,26 @@
                     '|  | BFV(ms) | BGV(ms) | CKKS(ms) | BFV(MB) | BGV(MB) | CKKS(MB) |\n',
                 );
                 stream.write(`| --- | --- | --- | --- | --- | --- | --- |\n`);
+
                 Object.keys(allKey).forEach(key => {
                     stream.write(
                         `| ${key} | ${current_BFV.keys[key]?.time.toFixed(2)} \
-| ${current_BGV.keys[key]?.time?.toFixed(2)} \
-| ${current_CKKS.keys[key]?.time.toFixed(2)} \
-| ${current_BFV.keys[key]?.size?.toFixed(2)} \
-| ${current_BGV.keys[key]?.size?.toFixed(2)} \
-| ${current_CKKS.keys[key]?.size?.toFixed(2)} \
+| ${current_BGV.keys[key]?.time?.toFixed(3)} \
+| ${current_CKKS.keys[key]?.time.toFixed(3)} \
+| ${current_BFV.keys[key]?.size?.toFixed(3)} \
+| ${current_BGV.keys[key]?.size?.toFixed(3)} \
+| ${current_CKKS.keys[key]?.size?.toFixed(3)} \
 |\n`,
                     );
                 });
                 Object.keys(allOperator).forEach(operator => {
                     stream.write(
                         `| ${operator} | ${current_BFV.operators[operator]?.time?.toFixed(2)} \
-| ${current_BGV.operators[operator]?.time?.toFixed(2)} \
-| ${current_CKKS.operators[operator]?.time?.toFixed(2)} \
-| ${current_BFV.operators[operator]?.size?.toFixed(2)} \
-| ${current_BGV.operators[operator]?.size?.toFixed(2)} \
-| ${current_CKKS.operators[operator]?.size?.toFixed(2)} \
+| ${current_BGV.operators[operator]?.time?.toFixed(3)} \
+| ${current_CKKS.operators[operator]?.time?.toFixed(3)} \
+| ${current_BFV.operators[operator]?.size} \
+| ${current_BGV.operators[operator]?.size} \
+| ${current_CKKS.operators[operator]?.size} \
 |\n`,
                     );
                 });
